@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { Geist_Mono, Noto_Sans } from "next/font/google"
+import { Geist_Mono } from "next/font/google"
+import localFont from "next/font/local"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -7,7 +8,12 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils"
 
-const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" })
+const wantedSans = localFont({
+  src: "./fonts/WantedSansVariable.woff2",
+  variable: "--font-sans",
+  weight: "400 1000",
+  display: "swap",
+})
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -32,7 +38,7 @@ export default function RootLayout({
         "antialiased",
         fontMono.variable,
         "font-sans",
-        notoSans.variable
+        wantedSans.variable
       )}
     >
       <body>
